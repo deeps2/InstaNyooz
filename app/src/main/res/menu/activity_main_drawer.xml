@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/bbc_news"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/bbc_news_name" />
+           <!--  android:checked="true" default -->
+
+        <item
+            android:id="@+id/bbc_sport"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/bbc_sport_name" />
+        <item
+            android:id="@+id/cnn"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/cnn_name" />
+        <item
+            android:id="@+id/google"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/google_name" />
+        <item
+            android:id="@+id/national_geographic"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/national_geographic_name" />
+        <item
+            android:id="@+id/sky_news"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/sky_news_name" />
+        <item
+            android:id="@+id/reddit"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/reddit_name" />
+        <item
+            android:id="@+id/cnbc"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/cnbc_name" />
+        <item
+            android:id="@+id/entertainment"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/entertainment_name" />
+        <item
+            android:id="@+id/new_scientist"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/new_scientist_name" />
+        <item
+            android:id="@+id/techcrunch"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/techcrunch_name" />
+    </group>
+</menu>
