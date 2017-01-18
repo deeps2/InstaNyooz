@@ -38,4 +38,10 @@ dependencies {
 
     //expandable text view
     compile 'com.ms-square:expandableTextView:0.1.4'
+
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.google.code.gson:gson:2.7'
+
 }

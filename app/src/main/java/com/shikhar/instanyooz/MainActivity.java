@@ -10,10 +10,20 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.subtitle) TextView toolbarSubtitle;
     @BindView(R.id.title) TextView toolbarTitle;
+                          String url = "https://newsapi.org/v1/";
+                          String apikey = "455e3b21f82f42aabfb438d4204d6ceb";
+                          String retrofitSourceName;
 
     // Make sure to be using android.support.v7.app.ActionBarDrawerToggle version.
     // The android.support.v4.app.ActionBarDrawerToggle has been deprecated.
@@ -92,18 +105,20 @@ public class MainActivity extends AppCompatActivity {
 
           if(sourceName == null){
               toolbarSubtitle.setText(getString(R.string.bbc_news_name));
+              retrofitSourceName = getString(R.string.bbc_news_name);
           }
           else{
               toolbarSubtitle.setText(sourceName);
               SharedPreferences.Editor sharedPref = this.getPreferences(Context.MODE_PRIVATE).edit();
               sharedPref.putString("SUBTITLE", sourceName);
+              retrofitSourceName = sourceName;
               sharedPref.commit();
           }
 
         // load data :)
-    //    onRefresh();
+    //    TODO: onRefresh();
 
-     //   getLoaderManager().restartLoader(0, null, this);
+     //   TODO: getLoaderManager().restartLoader(0, null, this);
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
@@ -135,14 +150,16 @@ public class MainActivity extends AppCompatActivity {
         // Setup drawer view
         setupDrawerContent(navigationView);
 
+        getRetrofitArray(retrofitSourceName, apikey);
+
         /*
         // sample code snippet to set the text content on the ExpandableTextView
         ExpandableTextView expTv1 = (ExpandableTextView)findViewById(R.id.expand_text_view);
 
 // IMPORTANT - call setText on the ExpandableTextView to set the text content to display
         expTv1.setText("hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog.");
-    */}
-
+    */
+    }
 
     // `onPostCreate` called when activity start-up is complete after `onStart()`
     // NOTE 1: Make sure to override the method with only a single `Bundle` argument
@@ -161,10 +178,73 @@ public class MainActivity extends AppCompatActivity {
         // Pass any configuration change to the drawer toggles
         drawerToggle.onConfigurationChanged(newConfig);
     }
+
+    public interface RetrofitArrayAPI {
+
+       // https://newsapi.org/v1/articles?source=time&apiKey=<key>
+        @GET("articles")
+        Call<List<Article>> getArticles(@Query("source") String newsSource, @Query("key") String apikey);
+
+    }
+
+    void getRetrofitArray(String newsSource, String apiKey) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        RetrofitArrayAPI service = retrofit.create(RetrofitArrayAPI.class);
+
+        Call<List<Article>> call = service.getArticles(newsSource, apikey);
+
+        call.enqueue(new Callback<List<Article>>() {
+            @Override
+            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
+                try {
+
+                    List<Article> articles = response.body();
+
+                    for (int i = 0; i < articles.size(); i++) {
+
+                      /*  if (i == 0) {
+                            text_id_1.setText("StudentId  :  " + StudentData.get(i).getStudentId());
+                            text_name_1.setText("StudentName  :  " + StudentData.get(i).getStudentName());
+                            text_marks_1.setText("StudentMarks  : " + StudentData.get(i).getStudentMarks());
+                        } else if (i == 1) {
+                            text_id_2.setText("StudentId  :  " + StudentData.get(i).getStudentId());
+                            text_name_2.setText("StudentName  :  " + StudentData.get(i).getStudentName());
+                            text_marks_2.setText("StudentMarks  : " + StudentData.get(i).getStudentMarks());
+                        }*/
+                    }
+
+
+                } catch (Exception e) {
+                    Log.d("onResponse", "There is an error");
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Article>> call, Throwable t) {
+                Log.d("onFailure", t.toString());
+            }
+
+        });
+    }
 }
 
-
+//TODO:
 // IMPLEMENT SIDE DRAWER(done). ..BUTTERKNIFE...
-// IMPLEMENT NO NET CONNECTION....IF TIME THEN ONLY NO NEWS FOUND
-//no internet ke liye photo and text..put it in framelayout also
+
+// IMPLEMENT NO NET CONNECTION....no internet ke liye photo and text..put it in framelayout also
+// IF TIME THEN ONLY NO NEWS FOUND
 //swipe refresh layout...SEE ALL LAYOUTS MUSTAFA KA...KAUN KAUN SA USE KAROO MAI BHEE
+//....check every json key if its null and if not then its key.empty""
+// handle for all key:value pairs and value is null, default me kya image,
+        //kaun author(paper name default ho jayga), default image(newspaper ka logo) like that
+
+//orientation change pe remain data (keyboard|hidden in manifest)
+//loading spinner on start add this to frame layout as well
+//how to open link inside app me chrome plugin like?? -- webview i think
