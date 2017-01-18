@@ -1,17 +1,40 @@
 <!-- sources -->
 <resources>
     <string name="app_name">InstaNyooz</string>
+
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
     <string name="bbc_news_name">BBC NEWS</string>
+    <string name="bbc_news_source">bbc-news</string>
+
     <string name="bbc_sport_name">BBC SPORT</string>
+    <string name="bbc_sport_source">bbc-sport</string>
+
     <string name="cnn_name">CNN</string>
+    <string name="cnn_source">cnn</string>
+
     <string name="google_name">GOOGLE</string>
+    <string name="google_source">google-news</string>
+
     <string name="national_geographic_name">NATIONAL GEOGRAPHIC</string>
+    <string name="national_geographic_source">national-geographic</string>
+
     <string name="sky_news_name">SKY NEWS</string>
+    <string name="sky_news_source">sky-news</string>
+
     <string name="reddit_name">REDDIT</string>
+    <string name="reddit_source">reddit-r-all</string>
+
     <string name="cnbc_name">CNBC</string>
+    <string name="cnbc_source">cnbc</string>
+
     <string name="entertainment_name">ENTERTAINMENT</string>
+    <string name="entertainment_source">entertainment-weekly</string>
+
     <string name="new_scientist_name">NEWSCIENTIST</string>
+    <string name="new_scientist_source">new-scientist</string>
+
     <string name="techcrunch_name">TECHCRUNCH</string>
+    <string name="techcrunch_source">techcrunch</string>
 </resources>

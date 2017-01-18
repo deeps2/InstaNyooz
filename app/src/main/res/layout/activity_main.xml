@@ -44,9 +44,10 @@
 
             </android.support.v7.widget.Toolbar>
 
-            <include layout="@layout/content_main" />
-
         </android.support.design.widget.AppBarLayout>
+
+        <include layout="@layout/content_main" />
+        <!-- this should be outside AppBarLayout -->
 
     </android.support.design.widget.CoordinatorLayout>
 

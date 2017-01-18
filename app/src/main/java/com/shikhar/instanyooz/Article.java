@@ -1,32 +1,29 @@
 package com.shikhar.instanyooz;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class Article {
 
-    @SerializedName("author")
-    @Expose
+    //@SerializedName("author")
+   // @Expose
     private String author;
 
-    @SerializedName("title")
-    @Expose
+   // @SerializedName("title")
+   // @Expose
     private String title;
 
-    @SerializedName("description")
-    @Expose
+    //@SerializedName("description")
+    //@Expose
     private String description;
 
-    @SerializedName("url")
-    @Expose
+    //@SerializedName("url")
+    //@Expose
     private String url;
 
-    @SerializedName("urlToImage")
-    @Expose
+    //@SerializedName("urlToImage")
+    //@Expose
     private String urlToImage;
 
-    @SerializedName("publishedAt")
-    @Expose
+    //@SerializedName("publishedAt")
+    //@Expose
     private String publishedAt;
 
     public String getAuthor() {

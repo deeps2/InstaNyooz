@@ -9,10 +9,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,8 +25,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,9 +35,14 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.subtitle) TextView toolbarSubtitle;
     @BindView(R.id.title) TextView toolbarTitle;
-                          String url = "https://newsapi.org/v1/";
-                          String apikey = "455e3b21f82f42aabfb438d4204d6ceb";
-                          String retrofitSourceName;
+
+    @BindView(R.id.recyclerView)RecyclerView recyclerView;
+                                ArticlesAdapter adapter;
+
+    String url = "https://newsapi.org/v1/";
+    String apiKey = "455e3b21f82f42aabfb438d4204d6ceb";
+    String retrofitUrlSourceName;
+    List<Article> listOfArticles = new ArrayList<>();
 
     // Make sure to be using android.support.v7.app.ActionBarDrawerToggle version.
     // The android.support.v4.app.ActionBarDrawerToggle has been deprecated.
@@ -63,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
         //read share preference and call
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String restoredSubTitle = sharedPref.getString("SUBTITLE", null);
-        navigationItemAction(restoredSubTitle);
+        String restoredRetrofitUrlSourceName = sharedPref.getString("URL_SOURCE_NAME", null);
+        navigationItemAction(restoredSubTitle, restoredRetrofitUrlSourceName);
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
@@ -71,27 +80,27 @@ public class MainActivity extends AppCompatActivity {
         int id = menuItem.getItemId();
 
         if (id == R.id.bbc_news) {
-            navigationItemAction(getString(R.string.bbc_news_name));
+            navigationItemAction(getString(R.string.bbc_news_name),getString(R.string.bbc_news_source));
         } else if (id == R.id.bbc_sport) {
-            navigationItemAction(getString(R.string.bbc_sport_name));
+            navigationItemAction(getString(R.string.bbc_sport_name),getString(R.string.bbc_sport_source));
         } else if (id == R.id.cnn) {
-            navigationItemAction(getString(R.string.cnn_name));
+            navigationItemAction(getString(R.string.cnn_name),getString(R.string.cnn_source));
         } else if (id == R.id.google) {
-            navigationItemAction(getString(R.string.google_name));
+            navigationItemAction(getString(R.string.google_name),getString(R.string.google_source));
         } else if (id == R.id.national_geographic) {
-            navigationItemAction(getString(R.string.national_geographic_name));
+            navigationItemAction(getString(R.string.national_geographic_name),getString(R.string.national_geographic_source));
         } else if (id == R.id.sky_news) {
-            navigationItemAction(getString(R.string.sky_news_name));
+            navigationItemAction(getString(R.string.sky_news_name),getString(R.string.sky_news_source));
         } else if (id == R.id.reddit) {
-            navigationItemAction(getString(R.string.reddit_name));
+            navigationItemAction(getString(R.string.reddit_name),getString(R.string.reddit_source));
         } else if (id == R.id.cnbc) {
-            navigationItemAction(getString(R.string.cnbc_name));
+            navigationItemAction(getString(R.string.cnbc_name),getString(R.string.cnbc_source));
         } else if (id == R.id.entertainment) {
-            navigationItemAction(getString(R.string.entertainment_name));
+            navigationItemAction(getString(R.string.entertainment_name),getString(R.string.entertainment_source));
         } else if (id == R.id.new_scientist) {
-            navigationItemAction(getString(R.string.new_scientist_name));
+            navigationItemAction(getString(R.string.new_scientist_name),getString(R.string.new_scientist_source));
         } else if (id == R.id.techcrunch) {
-            navigationItemAction(getString(R.string.techcrunch_name));
+            navigationItemAction(getString(R.string.techcrunch_name),getString(R.string.techcrunch_source));
         }
 
         // Highlight the selected item has been done by NavigationView
@@ -101,19 +110,24 @@ public class MainActivity extends AppCompatActivity {
         mDrawer.closeDrawers();
     }
 
-    private void navigationItemAction(String sourceName) {
+    private void navigationItemAction(String sourceName, String urlSourceName) {
 
           if(sourceName == null){
               toolbarSubtitle.setText(getString(R.string.bbc_news_name));
-              retrofitSourceName = getString(R.string.bbc_news_name);
+              retrofitUrlSourceName = getString(R.string.bbc_news_source);
           }
           else{
               toolbarSubtitle.setText(sourceName);
+
               SharedPreferences.Editor sharedPref = this.getPreferences(Context.MODE_PRIVATE).edit();
               sharedPref.putString("SUBTITLE", sourceName);
-              retrofitSourceName = sourceName;
+              sharedPref.putString("URL_SOURCE_NAME", urlSourceName);
               sharedPref.commit();
+
+              retrofitUrlSourceName = urlSourceName;
           }
+
+          getRetrofitArray(retrofitUrlSourceName, apiKey);
 
         // load data :)
     //    TODO: onRefresh();
@@ -147,10 +161,17 @@ public class MainActivity extends AppCompatActivity {
         mDrawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();  //IMPORTANT: without this hamburger icon will not come
 
+        //set layoutmanager for recycler view
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ArticlesAdapter(listOfArticles);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true); //TODO
+
         // Setup drawer view
         setupDrawerContent(navigationView);
 
-        getRetrofitArray(retrofitSourceName, apikey);
+
+
 
         /*
         // sample code snippet to set the text content on the ExpandableTextView
@@ -160,6 +181,9 @@ public class MainActivity extends AppCompatActivity {
         expTv1.setText("hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog.");
     */
     }
+
+
+
 
     // `onPostCreate` called when activity start-up is complete after `onStart()`
     // NOTE 1: Make sure to override the method with only a single `Bundle` argument
@@ -179,11 +203,11 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    public interface RetrofitArrayAPI {
+    public interface NewsArrayInterface {
 
        // https://newsapi.org/v1/articles?source=time&apiKey=<key>
         @GET("articles")
-        Call<List<Article>> getArticles(@Query("source") String newsSource, @Query("key") String apikey);
+        Call<NewsResponse> getArticles(@Query("source") String newsSource, @Query("apiKey") String apiKey);
 
     }
 
@@ -194,40 +218,48 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        RetrofitArrayAPI service = retrofit.create(RetrofitArrayAPI.class);
+        NewsArrayInterface serviceRequest = retrofit.create(NewsArrayInterface.class);
 
-        Call<List<Article>> call = service.getArticles(newsSource, apikey);
+        Call<NewsResponse> call = serviceRequest.getArticles(newsSource, apiKey);
 
-        call.enqueue(new Callback<List<Article>>() {
+        call.enqueue(new Callback<NewsResponse>() {
             @Override
-            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
-                try {
+            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
 
-                    List<Article> articles = response.body();
+                int statusCode = response.code();
 
-                    for (int i = 0; i < articles.size(); i++) {
+               // NewsResponse jsonResponse = response.body();
+              //  listOfArticles = new ArrayList<>(Arrays.asList(jsonResponse.getArticles()));
+               // adapter = new DataAdapter(data);
+               // recyclerView.setAdapter(adapter);
 
-                      /*  if (i == 0) {
-                            text_id_1.setText("StudentId  :  " + StudentData.get(i).getStudentId());
-                            text_name_1.setText("StudentName  :  " + StudentData.get(i).getStudentName());
-                            text_marks_1.setText("StudentMarks  : " + StudentData.get(i).getStudentMarks());
-                        } else if (i == 1) {
-                            text_id_2.setText("StudentId  :  " + StudentData.get(i).getStudentId());
-                            text_name_2.setText("StudentName  :  " + StudentData.get(i).getStudentName());
-                            text_marks_2.setText("StudentMarks  : " + StudentData.get(i).getStudentMarks());
-                        }*/
-                    }
+          //      if(listOfArticles != null){
+            //        listOfArticles.clear();
+            //        adapter.notifyDataSetChanged();
+            //    }
+                listOfArticles = response.body().getArticles();
+                //ArticlesAdapter adapter2 = new ArticlesAdapter(listOfArticles);
+                //recyclerView.setAdapter(adapter2 );
+        //        adapter = new ArticlesAdapter(listOfArticles);
+
+                        adapter.setDataAdapter(listOfArticles);
+
+                adapter.notifyDataSetChanged();
+                //adapter2.notifyDataSetChanged();
+
+                int q=0;
+                int qq=2;
+                //adapter.notifyDataSetChanged();
 
 
-                } catch (Exception e) {
-                    Log.d("onResponse", "There is an error");
-                    e.printStackTrace();
-                }
-
+                //adapter.notifyDataSetChanged();
+      //1          adapter = new ArticlesAdapter(listOfArticles);
+      // 2         recyclerView.setAdapter(adapter);   //TODO
+             //   adapter.notifyDataSetChanged();  //TODO
             }
 
             @Override
-            public void onFailure(Call<List<Article>> call, Throwable t) {
+            public void onFailure(Call<NewsResponse> call, Throwable t) {
                 Log.d("onFailure", t.toString());
             }
 
@@ -248,3 +280,11 @@ public class MainActivity extends AppCompatActivity {
 //orientation change pe remain data (keyboard|hidden in manifest)
 //loading spinner on start add this to frame layout as well
 //how to open link inside app me chrome plugin like?? -- webview i think
+//where to put code for notify data set changed...run app leave for sometime and see kee data change hua kya or i think when u do swipe then i have to make retrofit call and dataswap change...or maybe
+//dataswap change call not necesssary as in retrofit boy new adapter is being created...or see newsapp...
+//i think it will be used when no internet case or no news case...
+//by debugger simulate no news case and no net case
+
+//theek karna notifydatasetchange etc vagereh...first do a commit then modify
+//move adapter to 1st position when refreshed and when new item is selected
+//animation for thumbnails
