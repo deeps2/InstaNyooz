@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -24,23 +24,25 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
+                android:contentDescription="@null"
                 android:src="@drawable/launcher_image" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/news_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:ellipsize="end"
-                    android:fontFamily="sans-serif"
-                    android:maxLines="4"
+                    android:fontFamily="sans-serif-light"
+                    android:maxLines="3"
                     android:padding="8dp"
-                    android:text="hello sadasdsd asddadas asdasd asdd ds  hi sadsd asdadd Monica Crowley bows out of trump adminstration post following plagiarism revelations"
-                    android:textSize="16sp"
+                    android:text="Article Title"
+                    android:textSize="20sp"
+                    android:textColor="#000000"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:textStyle="bold" />
@@ -55,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="8dp"
-                        android:text="5hrs ago" />
+                        android:text="Published Time" />
 
                     <ImageView
                         android:id="@+id/share_button"
@@ -65,6 +67,7 @@
                         android:src="@drawable/ic_share"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
+                        android:contentDescription="@null"
                         android:text="5hrs ago" />
 
                 </LinearLayout>
@@ -85,8 +88,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="4dp"
+                android:textSize="16sp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
+                android:contentDescription="@null"
                 android:paddingTop="8dp"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp" />
@@ -96,6 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
+                android:contentDescription="@null"
                 android:background="@android:color/transparent" />
 
         </com.ms.square.android.expandabletextview.ExpandableTextView>

@@ -4,8 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +17,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +36,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     @BindView(R.id.toolbar)Toolbar toolbar;
     @BindView(R.id.drawer_layout)DrawerLayout mDrawer;
     @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.subtitle) TextView toolbarSubtitle;
     @BindView(R.id.title) TextView toolbarTitle;
+    @BindView(R.id.noData)LinearLayout noData;
+    @BindView(R.id.no_Internet)LinearLayout noNet;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
+    @BindView(R.id.empty_view) View emptyView;
+    @BindView(R.id.refresh) ImageView refresh;
+    @BindView(R.id.swipeRefresh) SwipeRefreshLayout mSwipeRefresh;
 
     @BindView(R.id.recyclerView)RecyclerView recyclerView;
                                 ArticlesAdapter adapter;
@@ -47,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     // Make sure to be using android.support.v7.app.ActionBarDrawerToggle version.
     // The android.support.v4.app.ActionBarDrawerToggle has been deprecated.
     private ActionBarDrawerToggle drawerToggle;
+
+    boolean flag = true; //flag to hide progress bar when swipe refresh is triggered
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -127,17 +143,33 @@ public class MainActivity extends AppCompatActivity {
               retrofitUrlSourceName = urlSourceName;
           }
 
-          getRetrofitArray(retrofitUrlSourceName, apiKey);
+          emptyView.setVisibility(View.VISIBLE);
+          if(flag)
+            progressBar.setVisibility(View.VISIBLE);
+          noData.setVisibility(View.INVISIBLE);
+          noNet.setVisibility(View.INVISIBLE);
 
-        // load data :)
-    //    TODO: onRefresh();
+         //check network connection
+        ConnectivityManager cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
-     //   TODO: getLoaderManager().restartLoader(0, null, this);
+        if (isConnected)
+            getRetrofitArray(retrofitUrlSourceName, apiKey);
+
+        else {
+            emptyView.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.INVISIBLE);
+            noData.setVisibility(View.INVISIBLE);
+            noNet.setVisibility(View.VISIBLE);
+            mSwipeRefresh.setRefreshing(false);
+            flag = true; //restore flag to old state(i.e. true)
+        }
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
-        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
-        // and will not render the hamburger icon without it.
+        // NOTE: Make sure you pass in a valid toolbar reference.
+        // ActionBarDrawToggle() does not require it and will not render the hamburger icon without it.
         return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
     }
 
@@ -163,27 +195,33 @@ public class MainActivity extends AppCompatActivity {
 
         //set layoutmanager for recycler view
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ArticlesAdapter(listOfArticles);
+        adapter = new ArticlesAdapter(listOfArticles, this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true); //TODO
+        recyclerView.setHasFixedSize(true);
 
+        //set onRefreshListener on SwipeRefreshLayout
+        mSwipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
+
+        //The refresh indicator starting and resting position is always positioned near the top of the refreshing content.
+        // This position is a consistent location, but can be adjusted in either direction based on whether or not there is a toolbar or actionbar present.
+        mSwipeRefresh.setProgressViewOffset(false, 0,
+                (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        24,
+                        getResources().getDisplayMetrics()));
+        mSwipeRefresh.setOnRefreshListener(this);
+
+        //when refresh icon below No Data Found message is clicked
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Setup drawer view
+                setupDrawerContent(navigationView);
+            }
+        });
         // Setup drawer view
         setupDrawerContent(navigationView);
-
-
-
-
-        /*
-        // sample code snippet to set the text content on the ExpandableTextView
-        ExpandableTextView expTv1 = (ExpandableTextView)findViewById(R.id.expand_text_view);
-
-// IMPORTANT - call setText on the ExpandableTextView to set the text content to display
-        expTv1.setText("hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog. hello. a quick brown fox jumps over a lazy dog.");
-    */
     }
-
-
-
 
     // `onPostCreate` called when activity start-up is complete after `onStart()`
     // NOTE 1: Make sure to override the method with only a single `Bundle` argument
@@ -201,6 +239,12 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggles
         drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override //swipe refresh layout
+    public void onRefresh() {
+        flag = false;
+        setupDrawerContent(navigationView);
     }
 
     public interface NewsArrayInterface {
@@ -228,34 +272,24 @@ public class MainActivity extends AppCompatActivity {
 
                 int statusCode = response.code();
 
-               // NewsResponse jsonResponse = response.body();
-              //  listOfArticles = new ArrayList<>(Arrays.asList(jsonResponse.getArticles()));
-               // adapter = new DataAdapter(data);
-               // recyclerView.setAdapter(adapter);
+                if(statusCode != 200) {
+                    emptyView.setVisibility(View.INVISIBLE);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    noData.setVisibility(View.VISIBLE);
+                    noNet.setVisibility(View.INVISIBLE);
+                    return;
+                }
 
-          //      if(listOfArticles != null){
-            //        listOfArticles.clear();
-            //        adapter.notifyDataSetChanged();
-            //    }
                 listOfArticles = response.body().getArticles();
-                //ArticlesAdapter adapter2 = new ArticlesAdapter(listOfArticles);
-                //recyclerView.setAdapter(adapter2 );
-        //        adapter = new ArticlesAdapter(listOfArticles);
-
-                        adapter.setDataAdapter(listOfArticles);
-
+                adapter.setDataAdapter(listOfArticles);
                 adapter.notifyDataSetChanged();
-                //adapter2.notifyDataSetChanged();
 
-                int q=0;
-                int qq=2;
-                //adapter.notifyDataSetChanged();
-
-
-                //adapter.notifyDataSetChanged();
-      //1          adapter = new ArticlesAdapter(listOfArticles);
-      // 2         recyclerView.setAdapter(adapter);   //TODO
-             //   adapter.notifyDataSetChanged();  //TODO
+                progressBar.setVisibility(View.INVISIBLE);
+                emptyView.setVisibility(View.INVISIBLE);
+                noData.setVisibility(View.INVISIBLE);
+                noNet.setVisibility(View.INVISIBLE);
+                mSwipeRefresh.setRefreshing(false);
+                flag = true; //restore flag to old state(i.e. true)
             }
 
             @Override
@@ -265,26 +299,15 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
+    @Override
+    public void onBackPressed() {  //when back pressed check drawer is open or not
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
 
-//TODO:
-// IMPLEMENT SIDE DRAWER(done). ..BUTTERKNIFE...
 
-// IMPLEMENT NO NET CONNECTION....no internet ke liye photo and text..put it in framelayout also
-// IF TIME THEN ONLY NO NEWS FOUND
-//swipe refresh layout...SEE ALL LAYOUTS MUSTAFA KA...KAUN KAUN SA USE KAROO MAI BHEE
-//....check every json key if its null and if not then its key.empty""
-// handle for all key:value pairs and value is null, default me kya image,
-        //kaun author(paper name default ho jayga), default image(newspaper ka logo) like that
-
-//orientation change pe remain data (keyboard|hidden in manifest)
-//loading spinner on start add this to frame layout as well
-//how to open link inside app me chrome plugin like?? -- webview i think
-//where to put code for notify data set changed...run app leave for sometime and see kee data change hua kya or i think when u do swipe then i have to make retrofit call and dataswap change...or maybe
-//dataswap change call not necesssary as in retrofit boy new adapter is being created...or see newsapp...
-//i think it will be used when no internet case or no news case...
-//by debugger simulate no news case and no net case
-
-//theek karna notifydatasetchange etc vagereh...first do a commit then modify
-//move adapter to 1st position when refreshed and when new item is selected
-//animation for thumbnails

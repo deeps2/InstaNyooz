@@ -1,9 +1,14 @@
 package com.shikhar.instanyooz;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Util {
 
@@ -29,6 +34,32 @@ public class Util {
             public void onAnimationRepeat(Animation animation) {
             }
         });
+    }
+
+    // convert date to format as 5 hours ago
+    public static String manipulateDateFormat(String post_date){
+
+        if(post_date == null)
+            return "";       //if
+
+        SimpleDateFormat existingUTCFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+        Date date = null;
+        try {
+            date = existingUTCFormat.parse(post_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (date != null) {
+            // Converting timestamp into x ago format
+            CharSequence timeAgo = DateUtils.getRelativeTimeSpanString(
+                    Long.parseLong(String.valueOf(date.getTime())),
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS);
+            return timeAgo + "";
+        }else {
+            return post_date;
+        }
     }
 }
 

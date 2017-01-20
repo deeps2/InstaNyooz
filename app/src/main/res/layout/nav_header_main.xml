@@ -31,7 +31,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:textColor="#FFFFFF"
-        android:text= "Read Live News acroos Globe" />
+        android:text= "News sorted in the order they appear on sources' homepage" />
 
 </LinearLayout>
