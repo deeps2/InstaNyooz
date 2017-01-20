@@ -38,8 +38,6 @@
     <string name="techcrunch_name">TECHCRUNCH</string>
     <string name="techcrunch_source">techcrunch</string>
 
-
-
     <string name="abc_news">ABC NEWS</string>
     <string name="abc_source">abc-news-au</string>
 
@@ -55,76 +53,123 @@
     <string name="business_insider">BUSINESS INSIDER</string>
     <string name="business_insider_source">business-insider</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="buzzfeed">BUZZFEED</string>
+    <string name="buzzfeed_source">buzzfeed</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="daily_mail">DAILY MAIL</string>
+    <string name="daily_mail_source">daily-mail</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="engadget">ENGADGET</string>
+    <string name="engadget_source">engadget</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="espn">ESPN</string>
+    <string name="espna_source">espn</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="espn_cric_info">ESPN CRIC INFO</string>
+    <string name="espn_cric_info_source">espn-cric-info</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="financial_times">FINANCIAL TIMES</string>
+    <string name="financial_times_source">financial-times</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="focus">FOCUS</string>
+    <string name="focus_source">focus</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="hackernews">HACKERNEWS</string>
+    <string name="hackernews_source">hackernews</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="ign">IGN</string>
+    <string name="ign_source">ign</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="independent">INDEPENDENT</string>
+    <string name="independent_source">independent</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="mashable">MASHABLE</string>
+    <string name="mashable_source">mashable</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="metro">METRO</string>
+    <string name="metro_source">metro</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="mirror">MIRROR</string>
+    <string name="mirror_source">mirror</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="mtvnews">MTV NEWS</string>
+    <string name="mtvnews_source">mtv-news</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="newsweek">NEWSWEEK</string>
+    <string name="newsweek_source">newsweek</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="newyorkmagazine">NEW YORK MAGAZINE</string>
+    <string name="newyorkmagazine_source">new-york-magazine</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="nfl">NFL NEWS</string>
+    <string name="nfl_source">nfl-news</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="polygon">POLYGON</string>
+    <string name="polygon_source">polygon</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="recode">RECODE</string>
+    <string name="recode_source">recode</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="reuters">REUTERS</string>
+    <string name="reuters_source">reuters</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="skysportsnews">SKY SPORTS NEWS</string>
+    <string name="skysportsnews_source">sky-sports-news</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="talksport">TALKSPORT</string>
+    <string name="talksport_source">talksport</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="techradar">TECHRADAR</string>
+    <string name="techradar_source">techradar</string>
 
-    <string name="techcrunch_name">TECHCRUNCH</string>
-    <string name="techcrunch_source">techcrunch</string>
+    <string name="theeconomist">THE ECONOMIST</string>
+    <string name="theeconomist_source">the-economist</string>
 
+    <string name="theguardianuk">THE GUARDIAN</string>
+    <string name="theguardianuk_source">the-guardian-uk</string>
+
+    <string name="thehindu">THE HINDU</string>
+    <string name="thehindu_source">the-hindu</string>
+
+    <string name="thehuffingtonpost">THE HUFFINGTON POST</string>
+    <string name="thehuffingtonpost_source">the-huffington-post</string>
+
+    <string name="theladbible">THE LAD BIBLE</string>
+    <string name="theladbible_source">the-lad-bible</string>
+
+    <string name="thenewyorktimes">THE NEW YORK TIMES</string>
+    <string name="thenewyorktimes_source">the-new-york-times</string>
+
+    <string name="thenextweb">THE NEXT WEB</string>
+    <string name="thenextweb_source">the-next-web</string>
+
+    <string name="thesportbible">THE SPORT BIBLE</string>
+    <string name="thesportbible_source">the-sport-bible</string>
+
+    <string name="thetelegraph">THE TELEGRAPH</string>
+    <string name="thetelegraph_source">the-telegraph</string>
+
+    <string name="thetimesofindia">THE TIMES OF INDIA</string>
+    <string name="thetimesofindia_source">the-times-of-india</string>
+
+    <string name="theverge">THE VERGE</string>
+    <string name="theverge_source">the-verge</string>
+
+    <string name="thewallstreetjournal">THE WALL STREET JOURNAL</string>
+    <string name="thewallstreetjournal_source">the-wall-street-journal</string>
+
+    <string name="thewashingtonpost">THE WASHINGTON POST</string>
+    <string name="thewashingtonpost_source">the-washington-post</string>
+
+    <string name="time">TIME</string>
+    <string name="time_source">time</string>
+
+    <string name="usatoday">USA TODAY</string>
+    <string name="usatoday_source">usa-today</string>
+
+    <string name="football_italia">FOOTABALL ITALIA</string>
+    <string name="footaball_italia_source">football-italia</string>
+
+    <string name="fortune">FORTUNE</string>
+    <string name="fortune_source">fortune</string>
 </resources>

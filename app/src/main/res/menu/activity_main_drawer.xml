@@ -3,293 +3,228 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/bbc_news"
-            android:src="@drawable/ic_newssources"
-            android:title="@string/bbc_news_name" />
-           <!--  android:checked="true" default -->
-
-        <item
-            android:id="@+id/bbc_sport"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/bbc_sport_name" />
-        <item
-            android:id="@+id/cnn"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
-        <item
-            android:id="@+id/google"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/google_name" />
-        <item
-            android:id="@+id/national_geographic"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/national_geographic_name" />
-        <item
-            android:id="@+id/sky_news"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/sky_news_name" />
-        <item
-            android:id="@+id/reddit"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/reddit_name" />
-        <item
-            android:id="@+id/cnbc"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/cnbc_name" />
-        <item
-            android:id="@+id/entertainment"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/entertainment_name" />
-        <item
-            android:id="@+id/new_scientist"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
-        <item
-            android:id="@+id/techcrunch"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/techcrunch_name" />
-
-
-
-        <item
             android:id="@+id/abc_news"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/bbc_sport_name" />
+            android:title="@string/abc_news" />
         <item
-            android:id="@+id/cnn"
+            android:id="@+id/ars_technicia"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
+            android:title="@string/ars_technica" />
         <item
-            android:id="@+id/google"
+            android:id="@+id/associated_press"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/google_name" />
+            android:title="@string/associated_press" />
         <item
-            android:id="@+id/national_geographic"
+            android:id="@+id/bbc_news"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/national_geographic_name" />
-        <item
-            android:id="@+id/sky_news"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/sky_news_name" />
-        <item
-            android:id="@+id/reddit"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/reddit_name" />
-        <item
-            android:id="@+id/cnbc"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/cnbc_name" />
-        <item
-            android:id="@+id/entertainment"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/entertainment_name" />
-        <item
-            android:id="@+id/new_scientist"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
-        <item
-            android:id="@+id/techcrunch"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/techcrunch_name" />
+            android:title="@string/bbc_news_name" />
         <item
             android:id="@+id/bbc_sport"
             android:icon="@drawable/ic_newssources"
             android:title="@string/bbc_sport_name" />
         <item
-            android:id="@+id/cnn"
+            android:id="@+id/bloomberg"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
+            android:title="@string/bloomberg" />
         <item
-            android:id="@+id/google"
+            android:id="@+id/business_insider"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/google_name" />
+            android:title="@string/business_insider" />
         <item
-            android:id="@+id/national_geographic"
+            android:id="@+id/buzzfeed"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/national_geographic_name" />
-        <item
-            android:id="@+id/sky_news"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/sky_news_name" />
-        <item
-            android:id="@+id/reddit"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/reddit_name" />
+            android:title="@string/buzzfeed" />
         <item
             android:id="@+id/cnbc"
             android:icon="@drawable/ic_newssources"
             android:title="@string/cnbc_name" />
         <item
+            android:id="@+id/cnn"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/cnn_name" />
+        <item
+            android:id="@+id/daily_mail"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/daily_mail" />
+        <item
+            android:id="@+id/engadget"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/engadget" />
+        <item
             android:id="@+id/entertainment"
             android:icon="@drawable/ic_newssources"
             android:title="@string/entertainment_name" />
         <item
-            android:id="@+id/new_scientist"
+            android:id="@+id/espn"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
+            android:title="@string/espn" />
         <item
-            android:id="@+id/techcrunch"
+            android:id="@+id/espn_cric_info"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/techcrunch_name" />
+            android:title="@string/espn_cric_info" />
         <item
-            android:id="@+id/bbc_sport"
+            android:id="@+id/financial_times"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/bbc_sport_name" />
+            android:title="@string/financial_times" />
         <item
-            android:id="@+id/cnn"
+            android:id="@+id/focus"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
+            android:title="@string/focus" />
+        <item
+            android:id="@+id/footaball_italia"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/football_italia" />
+        <item
+            android:id="@+id/fortune"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/fortune" />
         <item
             android:id="@+id/google"
             android:icon="@drawable/ic_newssources"
             android:title="@string/google_name" />
         <item
-            android:id="@+id/national_geographic"
+            android:id="@+id/hackernews"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/national_geographic_name" />
+            android:title="@string/hackernews" />
         <item
-            android:id="@+id/sky_news"
+            android:id="@+id/ign"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/sky_news_name" />
+            android:title="@string/ign" />
         <item
-            android:id="@+id/reddit"
+            android:id="@+id/independet"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/reddit_name" />
+            android:title="@string/independent" />
         <item
-            android:id="@+id/cnbc"
+            android:id="@+id/mashable"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnbc_name" />
+            android:title="@string/mashable" />
         <item
-            android:id="@+id/entertainment"
+            android:id="@+id/metro"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/entertainment_name" />
+            android:title="@string/metro" />
         <item
-            android:id="@+id/new_scientist"
+            android:id="@+id/mirror"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
+            android:title="@string/mirror" />
         <item
-            android:id="@+id/techcrunch"
+            android:id="@+id/mtv_news"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/techcrunch_name" />
-        <item
-            android:id="@+id/bbc_sport"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/bbc_sport_name" />
-        <item
-            android:id="@+id/cnn"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
-        <item
-            android:id="@+id/google"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/google_name" />
+            android:title="@string/mtvnews" />
         <item
             android:id="@+id/national_geographic"
             android:icon="@drawable/ic_newssources"
             android:title="@string/national_geographic_name" />
         <item
-            android:id="@+id/sky_news"
+            android:id="@+id/new_scientist"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/sky_news_name" />
+            android:title="@string/new_scientist_name" />
+        <item
+            android:id="@+id/newsweek"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/newsweek" />
+        <item
+            android:id="@+id/newyorkmagazine"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/newyorkmagazine" />
+        <item
+            android:id="@+id/nfl_news"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/nfl" />
+        <item
+            android:id="@+id/plygon"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/polygon" />
+        <item
+            android:id="@+id/recode"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/recode" />
         <item
             android:id="@+id/reddit"
             android:icon="@drawable/ic_newssources"
             android:title="@string/reddit_name" />
         <item
-            android:id="@+id/cnbc"
+            android:id="@+id/reuters"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnbc_name" />
-        <item
-            android:id="@+id/entertainment"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/entertainment_name" />
-        <item
-            android:id="@+id/new_scientist"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
-        <item
-            android:id="@+id/techcrunch"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/techcrunch_name" />
-        <item
-            android:id="@+id/bbc_sport"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/bbc_sport_name" />
-        <item
-            android:id="@+id/cnn"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
-        <item
-            android:id="@+id/google"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/google_name" />
-        <item
-            android:id="@+id/national_geographic"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/national_geographic_name" />
+            android:title="@string/reuters" />
         <item
             android:id="@+id/sky_news"
             android:icon="@drawable/ic_newssources"
             android:title="@string/sky_news_name" />
         <item
-            android:id="@+id/reddit"
+            android:id="@+id/skysportsnews"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/reddit_name" />
+            android:title="@string/skysportsnews" />
         <item
-            android:id="@+id/cnbc"
+            android:id="@+id/talksport"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnbc_name" />
-        <item
-            android:id="@+id/entertainment"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/entertainment_name" />
-        <item
-            android:id="@+id/new_scientist"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
+            android:title="@string/talksport" />
         <item
             android:id="@+id/techcrunch"
             android:icon="@drawable/ic_newssources"
             android:title="@string/techcrunch_name" />
         <item
-            android:id="@+id/bbc_sport"
+            android:id="@+id/techradar"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/bbc_sport_name" />
+            android:title="@string/techradar" />
         <item
-            android:id="@+id/cnn"
+            android:id="@+id/the_economist"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnn_name" />
+            android:title="@string/theeconomist" />
         <item
-            android:id="@+id/google"
+            android:id="@+id/the_guardianuk"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/google_name" />
+            android:title="@string/theguardianuk" />
         <item
-            android:id="@+id/national_geographic"
+            android:id="@+id/thehindu"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/national_geographic_name" />
+            android:title="@string/thehindu" />
         <item
-            android:id="@+id/sky_news"
+            android:id="@+id/thehuffingtonpost"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/sky_news_name" />
+            android:title="@string/thehuffingtonpost" />
         <item
-            android:id="@+id/reddit"
+            android:id="@+id/theladbible"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/reddit_name" />
+            android:title="@string/theladbible" />
         <item
-            android:id="@+id/cnbc"
+            android:id="@+id/the_new_york_times"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/cnbc_name" />
+            android:title="@string/thenewyorktimes" />
         <item
-            android:id="@+id/entertainment"
+            android:id="@+id/the_next_web"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/entertainment_name" />
+            android:title="@string/thenextweb" />
         <item
-            android:id="@+id/new_scientist"
+            android:id="@+id/thesportsbible"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/new_scientist_name" />
+            android:title="@string/thesportbible" />
         <item
-            android:id="@+id/techcrunch"
+            android:id="@+id/thetelegraph"
             android:icon="@drawable/ic_newssources"
-            android:title="@string/techcrunch_name" />
-    </group>
+            android:title="@string/thetelegraph" />
+        <item
+            android:id="@+id/thetimesofindia"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/thetimesofindia" />
+        <item
+            android:id="@+id/theverge"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/theverge" />
+        <item
+            android:id="@+id/thewallstreetjournal"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/thewallstreetjournal" />
+        <item
+            android:id="@+id/thewashingtonpost"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/thewashingtonpost" />
+        <item
+            android:id="@+id/time"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/time" />
+        <item
+            android:id="@+id/usatoday"
+            android:icon="@drawable/ic_newssources"
+            android:title="@string/usatoday" />
+        </group>
 </menu>
