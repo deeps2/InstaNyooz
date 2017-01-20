@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="200dp"
     android:background="@drawable/header_background"
 
     android:orientation="vertical"
@@ -13,7 +13,6 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <ImageView
-        android:id="@+id/imageView"
         android:paddingTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,11 +27,18 @@
         android:text="@string/app_name"/>
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:textColor="#FFFFFF"
         android:text= "News sorted in the order they appear on sources' homepage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_gravity="right"
+        android:textColor="#FFFFFF"
+        android:text= "-Powered By News API " />
 
 </LinearLayout>

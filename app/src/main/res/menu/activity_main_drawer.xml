@@ -67,10 +67,6 @@
             android:icon="@drawable/ic_newssources"
             android:title="@string/financial_times" />
         <item
-            android:id="@+id/focus"
-            android:icon="@drawable/ic_newssources"
-            android:title="@string/focus" />
-        <item
             android:id="@+id/footaball_italia"
             android:icon="@drawable/ic_newssources"
             android:title="@string/football_italia" />
@@ -131,7 +127,7 @@
             android:icon="@drawable/ic_newssources"
             android:title="@string/nfl" />
         <item
-            android:id="@+id/plygon"
+            android:id="@+id/polygon"
             android:icon="@drawable/ic_newssources"
             android:title="@string/polygon" />
         <item

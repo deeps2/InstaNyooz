@@ -63,16 +63,13 @@
     <string name="engadget_source">engadget</string>
 
     <string name="espn">ESPN</string>
-    <string name="espna_source">espn</string>
+    <string name="espn_source">espn</string>
 
     <string name="espn_cric_info">ESPN CRIC INFO</string>
     <string name="espn_cric_info_source">espn-cric-info</string>
 
     <string name="financial_times">FINANCIAL TIMES</string>
     <string name="financial_times_source">financial-times</string>
-
-    <string name="focus">FOCUS</string>
-    <string name="focus_source">focus</string>
 
     <string name="hackernews">HACKERNEWS</string>
     <string name="hackernews_source">hackernews</string>

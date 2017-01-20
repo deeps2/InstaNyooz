@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @BindView(R.id.recyclerView)RecyclerView recyclerView;
                                 ArticlesAdapter adapter;
+                            LinearLayoutManager llMgr;
+     @BindView(R.id.appBar) AppBarLayout appBar;
 
     String url = "https://newsapi.org/v1/";
     String apiKey = "455e3b21f82f42aabfb438d4204d6ceb";
@@ -117,6 +120,94 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             navigationItemAction(getString(R.string.new_scientist_name),getString(R.string.new_scientist_source));
         } else if (id == R.id.techcrunch) {
             navigationItemAction(getString(R.string.techcrunch_name),getString(R.string.techcrunch_source));
+        }else if (id == R.id.abc_news) {
+            navigationItemAction(getString(R.string.abc_news),getString(R.string.abc_source));
+        } else if (id == R.id.ars_technicia) {
+            navigationItemAction(getString(R.string.ars_technica),getString(R.string.ars_technica_source));
+        } else if (id == R.id.associated_press) {
+            navigationItemAction(getString(R.string.associated_press),getString(R.string.associated_press_source));
+        } else if (id == R.id.bloomberg) {
+            navigationItemAction(getString(R.string.bloomberg),getString(R.string.bloomberg_source));
+        } else if (id == R.id.business_insider) {
+            navigationItemAction(getString(R.string.business_insider),getString(R.string.business_insider_source));
+        } else if (id == R.id.buzzfeed) {
+            navigationItemAction(getString(R.string.buzzfeed),getString(R.string.buzzfeed_source));
+        } else if (id == R.id.daily_mail) {
+            navigationItemAction(getString(R.string.daily_mail),getString(R.string.daily_mail_source));
+        } else if (id == R.id.engadget) {
+            navigationItemAction(getString(R.string.engadget),getString(R.string.engadget_source));
+        } else if (id == R.id.espn) {
+            navigationItemAction(getString(R.string.espn),getString(R.string.espn_source));
+        }else if (id == R.id.espn_cric_info) {
+            navigationItemAction(getString(R.string.espn_cric_info),getString(R.string.espn_cric_info_source));
+        } else if (id == R.id.financial_times) {
+            navigationItemAction(getString(R.string.financial_times),getString(R.string.financial_times_source));
+        } else if (id == R.id.footaball_italia) {
+            navigationItemAction(getString(R.string.football_italia),getString(R.string.footaball_italia_source));
+        } else if (id == R.id.fortune) {
+            navigationItemAction(getString(R.string.fortune),getString(R.string.fortune_source));
+        } else if (id == R.id.hackernews) {
+            navigationItemAction(getString(R.string.hackernews),getString(R.string.hackernews_source));
+        } else if (id == R.id.ign) {
+            navigationItemAction(getString(R.string.ign),getString(R.string.ign_source));
+        } else if (id == R.id.independet) {
+            navigationItemAction(getString(R.string.independent),getString(R.string.independent_source));
+        } else if (id == R.id.mashable) {
+            navigationItemAction(getString(R.string.mashable),getString(R.string.mashable_source));
+        }else if (id == R.id.metro) {
+            navigationItemAction(getString(R.string.metro),getString(R.string.metro_source));
+        } else if (id == R.id.mirror) {
+            navigationItemAction(getString(R.string.mirror),getString(R.string.mirror_source));
+        } else if (id == R.id.mtv_news) {
+            navigationItemAction(getString(R.string.mtvnews),getString(R.string.mtvnews_source));
+        } else if (id == R.id.newsweek) {
+            navigationItemAction(getString(R.string.newsweek),getString(R.string.newsweek_source));
+        } else if (id == R.id.newyorkmagazine) {
+            navigationItemAction(getString(R.string.newyorkmagazine),getString(R.string.newyorkmagazine_source));
+        } else if (id == R.id.nfl_news) {
+            navigationItemAction(getString(R.string.nfl),getString(R.string.nfl_source));
+        } else if (id == R.id.polygon) {
+            navigationItemAction(getString(R.string.polygon),getString(R.string.polygon_source));
+        } else if (id == R.id.recode) {
+            navigationItemAction(getString(R.string.recode),getString(R.string.recode_source));
+        } else if (id == R.id.reuters) {
+            navigationItemAction(getString(R.string.reuters),getString(R.string.reuters_source));
+        } else if (id == R.id.skysportsnews) {
+            navigationItemAction(getString(R.string.skysportsnews),getString(R.string.skysportsnews_source));
+        }else if (id == R.id.talksport) {
+            navigationItemAction(getString(R.string.talksport),getString(R.string.talksport_source));
+        } else if (id == R.id.techradar) {
+            navigationItemAction(getString(R.string.techradar),getString(R.string.techradar_source));
+        } else if (id == R.id.the_economist) {
+            navigationItemAction(getString(R.string.theeconomist),getString(R.string.theeconomist_source));
+        } else if (id == R.id.the_guardianuk) {
+            navigationItemAction(getString(R.string.theguardianuk),getString(R.string.theguardianuk_source));
+        } else if (id == R.id.thehindu) {
+            navigationItemAction(getString(R.string.thehindu),getString(R.string.thehindu_source));
+        } else if (id == R.id.thehuffingtonpost) {
+            navigationItemAction(getString(R.string.thehuffingtonpost),getString(R.string.thehuffingtonpost_source));
+        } else if (id == R.id.theladbible) {
+            navigationItemAction(getString(R.string.theladbible),getString(R.string.theladbible_source));
+        } else if (id == R.id.the_new_york_times) {
+            navigationItemAction(getString(R.string.thenewyorktimes),getString(R.string.thenewyorktimes_source));
+        } else if (id == R.id.the_next_web) {
+            navigationItemAction(getString(R.string.thenextweb),getString(R.string.thenextweb_source));
+        } else if (id == R.id.thesportsbible) {
+            navigationItemAction(getString(R.string.thesportbible),getString(R.string.thesportbible_source));
+        }else if (id == R.id.thetelegraph) {
+            navigationItemAction(getString(R.string.thetelegraph), getString(R.string.thetelegraph_source));
+        }else if (id == R.id.thetimesofindia) {
+            navigationItemAction(getString(R.string.thetimesofindia),getString(R.string.thetimesofindia_source));
+        } else if (id == R.id.theverge) {
+            navigationItemAction(getString(R.string.theverge),getString(R.string.theverge_source));
+        } else if (id == R.id.thewallstreetjournal) {
+            navigationItemAction(getString(R.string.thewallstreetjournal),getString(R.string.thewallstreetjournal_source));
+        } else if (id == R.id.thewashingtonpost) {
+            navigationItemAction(getString(R.string.thewashingtonpost),getString(R.string.thewashingtonpost_source));
+        } else if (id == R.id.time) {
+            navigationItemAction(getString(R.string.time),getString(R.string.time_source));
+        } else if (id == R.id.usatoday) {
+            navigationItemAction(getString(R.string.usatoday),getString(R.string.usatoday_source));
         }
 
         // Highlight the selected item has been done by NavigationView
@@ -194,7 +285,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         drawerToggle.syncState();  //IMPORTANT: without this hamburger icon will not come
 
         //set layoutmanager for recycler view
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        llMgr = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(llMgr);
         adapter = new ArticlesAdapter(listOfArticles, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
@@ -280,6 +372,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     return;
                 }
 
+                appBar.setExpanded(true,true); //unhide app bar when new new source is chosen
+                llMgr.scrollToPositionWithOffset(0,0);//scroll to top of recycler view
                 listOfArticles = response.body().getArticles();
                 adapter.setDataAdapter(listOfArticles);
                 adapter.notifyDataSetChanged();
