@@ -2,28 +2,11 @@ package com.shikhar.instanyooz;
 
 public class Article {
 
-    //@SerializedName("author")
-   // @Expose
     private String author;
-
-   // @SerializedName("title")
-   // @Expose
     private String title;
-
-    //@SerializedName("description")
-    //@Expose
     private String description;
-
-    //@SerializedName("url")
-    //@Expose
     private String url;
-
-    //@SerializedName("urlToImage")
-    //@Expose
     private String urlToImage;
-
-    //@SerializedName("publishedAt")
-    //@Expose
     private String publishedAt;
 
     public String getAuthor() {

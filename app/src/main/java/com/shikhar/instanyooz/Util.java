@@ -5,7 +5,6 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,7 +39,7 @@ public class Util {
     public static String manipulateDateFormat(String post_date){
 
         if(post_date == null)
-            return "";       //if
+            return "";       //if no date is returned by the API then set corresponding date view to empty
 
         SimpleDateFormat existingUTCFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 

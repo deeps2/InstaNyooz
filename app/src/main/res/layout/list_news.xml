@@ -67,8 +67,7 @@
                         android:src="@drawable/ic_share"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
-                        android:contentDescription="@null"
-                        android:text="5hrs ago" />
+                        android:contentDescription="@null"/>
 
                 </LinearLayout>
 

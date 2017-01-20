@@ -23,7 +23,6 @@ public class SplashActivity extends AppCompatActivity implements Util.AnimateVie
         ButterKnife.bind(this);
 
         // change font of app_name text view
-                //Util.changeViewTypeFace(this, "Righteous-Regular.ttf", appName);
         Typeface font = Typeface.createFromAsset(this.getAssets(), "Righteous-Regular.ttf");
         appName.setTypeface(font);
 
