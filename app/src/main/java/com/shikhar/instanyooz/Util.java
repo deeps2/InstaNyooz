@@ -9,6 +9,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static android.view.View.Z;
+
 public class Util {
 
     // when use animate view function you must implement this interface
@@ -40,6 +42,9 @@ public class Util {
 
         if(post_date == null)
             return "";       //if no date is returned by the API then set corresponding date view to empty
+
+        if(post_date.equals("0001-01-01T00:00:00Z")) //because Times of India is always returning this in time stamp which is Jan1,1 (wrong information they are sending)
+            return "";
 
         SimpleDateFormat existingUTCFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
