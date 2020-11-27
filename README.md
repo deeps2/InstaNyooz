@@ -8,8 +8,7 @@ https://www.youtube.com/watch?v=Eu3moiT2LhM
 # ScreenShots
 
 <img src="https://firebasestorage.googleapis.com/v0/b/delhi06-31a81.appspot.com/o/1ibu07.gif?alt=media&token=302d95b2-349a-493b-bb0d-22ee2e97de14">&nbsp;&nbsp;
-<img src="https://firebasestorage.googleapis.com/v0/b/delhi06-31a81.appspot.com/o/news2.jpg?alt=media&token=eed4e243-00a0-46fa-a83a-002163e48f33" width=280/>&nbsp;&nbsp;
-<img src="https://firebasestorage.googleapis.com/v0/b/delhi06-31a81.appspot.com/o/news4.5.jpg?alt=media&token=aac96d32-46a6-409e-9ed8-9a7cecd739ec" width=280/>&nbsp;&nbsp; 
+<img src="https://firebasestorage.googleapis.com/v0/b/delhi06-31a81.appspot.com/o/news2.jpg?alt=media&token=eed4e243-00a0-46fa-a83a-002163e48f33" width=280/>&nbsp;&nbsp; 
 <img src="https://firebasestorage.googleapis.com/v0/b/delhi06-31a81.appspot.com/o/news4.jpg?alt=media&token=3cc79c54-7fa6-402a-8e6d-64936e68b055" width=280/>&nbsp;&nbsp;
 <img src="https://firebasestorage.googleapis.com/v0/b/delhi06-31a81.appspot.com/o/news5.jpg?alt=media&token=605e9035-b557-4485-b6aa-a6d2dc3b3d4e" width=280/>
 
